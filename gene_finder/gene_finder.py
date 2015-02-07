@@ -2,7 +2,7 @@
 """
 Created on Sun Feb  2 11:24:42 2014
 
-@author: YOUR NAME HERE
+@author: ALIX MCCABE AND KEENAN ZUCKER
 
 """
 
@@ -34,14 +34,8 @@ def get_complement(nucleotide):
     you can use the dictionary to set up a "matching" matrix and just return matching(nucleotide)
     it's magic
     """
-    if nucleotide == "A":
-        return 'T'    
-    elif nucleotide == "G":
-        return 'C'
-    elif nucleotide == "T":
-        return 'A'
-    elif nucleotide == "C":
-        return 'G'
+    nucl_matchings = {"A": "T", "T": "A", "G": "C", "C": "G"}
+    return nucl_matchings[nucleotide]
 
 def get_reverse_complement(dna):
     """ Computes the reverse complementary sequence of DNA for the specfied DNA
@@ -54,31 +48,12 @@ def get_reverse_complement(dna):
     >>> get_reverse_complement("CCGCGTTCA")
     'TGAACGCGG'
     """
-    li = list(dna)
-    y = len(dna)
+    reverse_strand = dna[::-1]
 
-    li = li[::-1]
-
-    i = 0
-
-    while i < y:
-        if li[i] == "A":
-            li[i] = 'T'    
-        elif li[i] == "G":
-            li[i] = 'C'
-        elif li[i] == "T":
-            li[i] = 'A'
-        elif li[i] == "C":
-            li[i] = 'G'
-        i = i+1
-
-    """dna.replace("A","T") 
-    dna.replace("T","A")
-    dna.replace("G","C")
-    dna.replace("C","G")"""
-    # TODO: implement this
+    for nucl in reverse_strand:
+        get_complement(nucl)
     
-    return "".join(li)
+    return "".join(reverse_strand)
 
 def rest_of_ORF(dna):
     """ Takes a DNA sequence that is assumed to begin with a start codon and returns
@@ -110,7 +85,7 @@ def rest_of_ORF(dna):
     else:
         return li[0:y]
 
-#print rest_of_ORF("ATGAGATAGG")
+
 def find_all_ORFs_oneframe(dna):
     """ Finds all non-nested open reading frames in the given DNA sequence and returns
         them as a list.  This function should only find ORFs that are in the default
@@ -167,16 +142,12 @@ def find_all_ORFs(dna):
 
     x = find_all_ORFs_oneframe(dna)
 
-    y = find_all_ORFs_oneframe(dna[1:])
+    x.extend(find_all_ORFs_oneframe(dna[1:]))
 
-    z = find_all_ORFs_oneframe(dna[2:])
+    x.extend(find_all_ORFs_oneframe(dna[2:]))
 
-    l = [x,y,z]
+    return x
 
-    allORFs = [item for sublist in l for item in sublist]
-
-    return allORFs
-#print find_all_ORFs("ATGCCCATGAACTAACATGCCGTAG")
 
 def find_all_ORFs_both_strands(dna):
     """ Finds all non-nested open reading frames in the given DNA sequence on both
@@ -197,12 +168,9 @@ def find_all_ORFs_both_strands(dna):
 
     comp = get_reverse_complement(dna)
     
-    y = find_all_ORFs(comp)
+    x.extend(find_all_ORFs(comp))
 
-    l = [x,y]
-    allORFsBoth = [item for sublist in l for item in sublist]
-
-    return allORFsBoth
+    return x
 
 def longest_ORF(dna):
     """ Finds the longest ORF on both strands of the specified DNA and returns it
@@ -279,8 +247,6 @@ def coding_strand_to_AA(dna):
         if len(x)==3:
             #print aa_table[x]
             y.append(aa_table[x])
-        else:
-            continue
 
     return ''.join(y)
 
@@ -304,6 +270,6 @@ tells the program what to run automatically when the program is initiated"""
 
 print gene_finder(dna,longest_ORF_noncoding(dna,1500))
 
-if __name__ == "__main__":
-    import doctest          #doctest isjust a specific way of accessing the automatic programs
-    doctest.testmod()
+# # if __name__ == "__main__":
+# #     import doctest          #doctest isjust a specific way of accessing the automatic programs
+# #     doctest.testmod()
