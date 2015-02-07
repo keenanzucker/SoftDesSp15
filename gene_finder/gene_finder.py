@@ -2,7 +2,11 @@
 """
 Created on Sun Feb  2 11:24:42 2014
 
+<<<<<<< HEAD
 @author: ALIX MCCABE AND KEENAN ZUCKER
+=======
+@author: ALIX MCCABE, KEENAN ZUCKER (PAIR PROGRAMMING WIZARDS)
+>>>>>>> adfbebf6c3dc040d52365a664bf11aca3749a526
 
 """
 
@@ -270,6 +274,12 @@ tells the program what to run automatically when the program is initiated"""
 
 print gene_finder(dna,longest_ORF_noncoding(dna,1500))
 
+<<<<<<< HEAD
 # # if __name__ == "__main__":
 # #     import doctest          #doctest isjust a specific way of accessing the automatic programs
 # #     doctest.testmod()
+=======
+if __name__ == "__main__":
+    import doctest          #doctest isjust a specific way of accessing the automatic programs
+    doctest.testmod()
+>>>>>>> adfbebf6c3dc040d52365a664bf11aca3749a526
