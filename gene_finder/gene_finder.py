@@ -30,8 +30,13 @@ def get_complement(nucleotide):
     'T'
     >>> get_complement('C')
     'G'
+<<<<<<< HEAD
     This doctest is sufficient to test this code - We decided we didn't need to add anything else
 
+=======
+
+    This doctest is sufficient to test this code - We decided we didn't need to add anything else
+>>>>>>> 74e0a9ca586074bd919f5d208fdacd7dc13b86bb
     you can use the dictionary to set up a "matching" matrix and just return matching(nucleotide)
     it's magic
     """

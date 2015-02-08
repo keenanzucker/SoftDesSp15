@@ -1,0 +1,13 @@
+Author: KEENAN ZUCKER AND ALIX MCCABE
+
+For our gene_finder function, when loaded the salmonella dna, we found it encoded for a lot of ATP synthase, and mostly for the bacteria Salmonella enterica. We also found many proteins of ATP synthase associated with E. coli. There were also a few instances of invasive proteins that we located. The majority of the proteins were some sort of ATP synthase associated with the SpaL region. From Groisman and Ochman we learned that these proteins are extremely common among virulent bacteria, as they're responsible for distribution of virulent antigens.
+
+Our found list of amino acids was also associated with a superfamily called ABC_ATPase. Upon further research, we investigated that this super family is responsible for the transportation of a variety of different compounds in the cell. 
+
+We found this protein about 14 times: ATP synthase SpaL [Salmonella enterica]
+We found this protein about 13 times: ATP synthase SpaL [Escherichia coli] 
+This stands to reason, since one of the effects of Salmonella is adverse intestinal symptoms associated with E. Coli. We learned in class that harmful E. Coli is one of the dangerous components of the Salmonella bacteria. 
+We also found other strains of ATP synthase SpaL that were last prevelant. The above two seem to be the most pervasive.
+
+YAY!
+SCIENCE!
