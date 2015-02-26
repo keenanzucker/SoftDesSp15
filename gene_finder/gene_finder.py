@@ -267,6 +267,7 @@ def coding_strand_to_AA(dna):
         'MPA'
     """
 
+<<<<<<< HEAD
     ListAmino = []
 
     #loops through all dna codons, assigns amino acid letters from dictionary
@@ -277,6 +278,8 @@ def coding_strand_to_AA(dna):
 
     return ''.join(ListAmino)
 
+=======
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
 def gene_finder(dna):
     """ Returns the amino acid sequences that are likely coded by the specified dna
         

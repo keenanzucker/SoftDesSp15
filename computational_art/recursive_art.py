@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """ Recursive Art!  Computers can do amazing things! This program can create beautiful PNG images using the power of random and recursion. It works
 by using a build function that will be generate random functions within nested lists between a passed-in depth. Then the random function will be evaluated
 and remapped to a value between 0-255, which correspond to an RGB color value. This creates unique and stylish images each time run!"""
@@ -9,6 +10,13 @@ import math
 minDepth = 9
 maxDepth = 12
 numImages = 5
+=======
+""" TODO: Put your header comment here """
+
+import random
+from PIL import Image
+
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
 
 def build_random_function(min_depth, max_depth):
     """ Builds a random function of depth at least min_depth and depth
@@ -22,6 +30,7 @@ def build_random_function(min_depth, max_depth):
                  these functions)
     """
     # TODO: implement this
+<<<<<<< HEAD
     temp = random.randint(2,7)
 
     if max_depth == 0:                          #Base case for maximum depth, chooses between x and y to return
@@ -56,6 +65,10 @@ def build_random_function(min_depth, max_depth):
 
 
 print build_random_function(minDepth,maxDepth)
+=======
+    pass
+
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
 
 def evaluate_random_function(f, x, y):
     """ Evaluate the random function f with inputs x,y
@@ -72,6 +85,7 @@ def evaluate_random_function(f, x, y):
         0.02
     """
     # TODO: implement this
+<<<<<<< HEAD
 
     if f[0] == "x":     #Function for X
         return x
@@ -102,6 +116,9 @@ def evaluate_random_function(f, x, y):
 
     elif f[0] == "root":        #Function takes square root of first input
         return math.sqrt(abs(evaluate_random_function(f[1], x, y)))
+=======
+    pass
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
 
 
 def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
@@ -128,6 +145,7 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
         1.5
     """
     # TODO: implement this
+<<<<<<< HEAD
     
     position = val - float(input_interval_start)
 
@@ -138,6 +156,9 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
     distanceOutput = float(output_interval_end) - float(output_interval_start)  
 
     return (relative * distanceOutput) + output_interval_start
+=======
+    pass
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
 
 
 def color_map(val):
@@ -181,16 +202,26 @@ def test_image(filename, x_size=350, y_size=350):
     im.save(filename)
 
 
+<<<<<<< HEAD
 def generate_art(filename, x_size=1600, y_size=900):
+=======
+def generate_art(filename, x_size=350, y_size=350):
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
     """ Generate computational art and save as an image file.
 
         filename: string filename for image (should be .png)
         x_size, y_size: optional args to set image dimensions (default: 350)
     """
     # Functions for red, green, and blue channels - where the magic happens!
+<<<<<<< HEAD
     red_function = build_random_function(minDepth, maxDepth)
     green_function = build_random_function(minDepth, maxDepth)
     blue_function = build_random_function(minDepth, maxDepth)
+=======
+    red_function = ["x"]
+    green_function = ["y"]
+    blue_function = ["x"]
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
 
     # Create image and loop over all pixels
     im = Image.new("RGB", (x_size, y_size))
@@ -215,6 +246,7 @@ if __name__ == '__main__':
     # Create some computational art!
     # TODO: Un-comment the generate_art function call after you
     #       implement remap_interval and evaluate_random_function
+<<<<<<< HEAD
     for i in range (0, numImages):
         generate_art("Wall" + str(i) + ".png")
 
@@ -222,3 +254,10 @@ if __name__ == '__main__':
     # TODO: Comment or remove this function call after testing PIL install
     #test_image("noise.png")
 
+=======
+    #generate_art("myart.png")
+
+    # Test that PIL is installed correctly
+    # TODO: Comment or remove this function call after testing PIL install
+    test_image("noise.png")
+>>>>>>> f995e7995873fb13efc0faeca7688191045d189d
