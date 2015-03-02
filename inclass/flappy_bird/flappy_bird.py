@@ -203,7 +203,7 @@ class FlappyView():
         self.screen_boundaries = pygame.Rect(0 ,0, width, height)
         # this is used for figuring out where to draw stuff
         self.model = model
-
+ 
     def draw(self):
         """ Redraw the full game window """
         self.screen.fill((0,51,102))
