@@ -1,0 +1,39 @@
+"""Dictionary Test Stuff"""
+
+d = {}
+
+d['hello'] = 3
+d['goodbye'] = 5
+d[4] = 6
+
+
+def histogram(string):
+	d = dict()
+	for c in string:
+		current = d.get(c,0)
+		d[c] = current + 1
+
+	return d
+
+h = histogram('brontosaurus')
+
+def printHist(h):
+	for c in h:
+		print c, h[c]
+
+#print printHist(h)
+
+def getPosNeg(n):
+	return (n,-n)
+
+returnValue =getPosNeg(5)
+print "pos is ", returnValue[0]
+print "neg is ", returnValue[1]
+
+(pos, neg) = getPosNeg(10)
+print pos, neg
+
+L = ['a', 2 , 5]
+
+for i in enumerate(L):
+	print str(i[0]) + str(i[1])

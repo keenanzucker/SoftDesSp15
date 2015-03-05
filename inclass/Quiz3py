@@ -1,0 +1,33 @@
+
+
+def scrabble(word):
+	#d = {}
+	d = {'A' : 1, 'K':2, 'O': 2, 'I':3}
+	score = 0
+
+	for i in word:
+		if i not in d.keys():
+			return -1
+		elif i in d.keys():
+			score += d[i]
+
+
+	return score
+
+#Wants to print out file in Pig Latin
+
+def processText(filename):
+	fp = open(filename)
+
+	for line in fp:
+		for word in line.split():
+			print word
+
+	fb.close()
+
+if __name__ = "__main__":
+	import sys
+	filename =  sys.argv[1]	
+	processText("filename")
+
+
