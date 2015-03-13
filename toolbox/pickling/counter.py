@@ -30,7 +30,19 @@ def update_counter(file_name, reset=False):
 	2
 	"""
 	
-	print pickle.dumps(file_name)
+	#print pickle.dumps(file_name)
+
+	if exists(file_name) and not reset:
+		f = open(file_name,'r+')
+		counter = int(f.read().strip('\n'))
+		counter += 1
+	else:
+		f = open(file_name,'w')
+		counter = 1
+
+	f.seek(0,0)
+	f.write(str(counter))
+	return counter
 
 
 
