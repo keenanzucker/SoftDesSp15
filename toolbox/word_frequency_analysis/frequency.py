@@ -27,11 +27,14 @@ def get_word_list(file_name):
 	while lines[curr_line].find('START OF THIS PROJECT GUTENBERG EBOOK') == -1:
 		curr_line += 1
 		lines = lines[curr_line+1:]
+		
 		for words in lines:
-			print words
+			if lines[curr_line].find('THE END') == curr_line:
+				break
+			else:
+				print words
 
-		if lines[curr_line].find('THE END') == curr_line:
-			break
+		
 			#storyEdit.append(words.lower())
 
 	#return storyEdit
