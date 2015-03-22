@@ -13,6 +13,7 @@ import json
 import pprint
 from pprint import pprint
 from pygeocoder import Geocoder
+import ast
 
 
 # Useful URLs (you need to add the appropriate parameters for your requests)
@@ -46,10 +47,9 @@ def get_lat_long(place_name):
     See https://developers.google.com/maps/documentation/geocoding/
     for Google Maps Geocode API URL formatting requirements.
     """
+
     results = Geocoder.geocode(place_name)
     return results[0].coordinates
-
-#print get_lat_long(get_json("https://maps.googleapis.com/maps/api/geocode/json?address=Fenway%20Park"))
 
 def get_nearest_station(latitude, longitude):
     """
@@ -59,13 +59,29 @@ def get_nearest_station(latitude, longitude):
     See http://realtime.mbta.com/Portal/Home/Documents for URL
     formatting requirements for the 'stopsbylocation' API.
     """
-    pass
+    url = "http://realtime.mbta.com/developer/api/v2/stopsbylocation?api_key=wX9NwuHnZU2ToO7GmGR9uw&lat=" + str(latitude) + "&lon=" + str(longitude) + "&format=json"
+    
+    allStops = urllib.urlopen(url)
+    stops = allStops.read()
 
+    stops = ast.literal_eval(stops)
+
+    distance = stops['stop'][0]['distance']
+    name = stops['stop'][0]['stop_name']
+
+    return (float(distance), name)
 
 def find_stop_near(place_name):
     """
     Given a place name or address, print the nearest MBTA stop and the 
     distance from the given place to that stop.
     """
-    pass
+    coordinates = get_lat_long(place_name)
+    return get_nearest_station(coordinates[0], coordinates[1])
 
+
+#Testing with some famous Boston Points of Interest
+
+print find_stop_near("TD Garden")
+print find_stop_near("Fenway Park")
+print find_stop_near("Hynes Convention Center")    #Returns 0.0 distance because it is a T stop!!
