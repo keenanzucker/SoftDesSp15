@@ -10,11 +10,10 @@ def get_word_list(file_name):
 		returns a list of the words used in the book as a list.
 		All words are converted to lower case.
 	"""
-	#storyFull = open(file_name).read()
 
 	storyEdit = []
-	word_list = []
-	
+
+	#Reads the file starting after the beginning	
 	f = open(file_name,'r')
 	lines = f.readlines()
 	curr_line = 0
@@ -22,11 +21,15 @@ def get_word_list(file_name):
 		curr_line += 1
 	lines = lines[curr_line+1:]
 
+
+	#Loops through each row, making everything lowercase and replacing all punctuation
 	for row in lines:
 	 	row = row.lower()
 	 	row = row.translate(string.maketrans("",""), string.punctuation)
 	 	storyEdit += row.split()
 
+
+	#Returns the final list as 
 	return storyEdit
 
 
@@ -42,18 +45,16 @@ def get_top_n_words(word_list, n):
 	"""
 	
 
-	c = Counter(word_list)
+	wordCount = Counter(word_list)
 	topWords = []
-	#for i in range(0,n - 1):
-		#topWords[i] = c[i]
-		#print c(i)
 
-	#return topWords
-	return c
+	orderedByFrequency = sorted(wordCount, key=wordCount.get, reverse=True)
+
+	for i in range (0 , n):
+		topWords.append(orderedByFrequency[i])
+
+	return topWords
 
 
-
-#print get_word_list('test.txt')
-#print get_word_list('pg32325.txt')
-print get_top_n_words(get_word_list('pg32325.txt'), 10)
+print get_top_n_words(get_word_list('pg32325.txt'), 100)
 
