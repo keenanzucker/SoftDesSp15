@@ -1,7 +1,8 @@
 """ Analyzes the word frequencies in a book downloaded from
 	Project Gutenberg """
 
-import string
+import string  
+from collections import Counter
 
 def get_word_list(file_name):
 	""" Reads the specified project Gutenberg book.  Header comments,
@@ -12,32 +13,21 @@ def get_word_list(file_name):
 	#storyFull = open(file_name).read()
 
 	storyEdit = []
+	word_list = []
 	
-	#for word in storyFull.split():
-	#	storyEdit.append(word.lower())
-		#for character in word:
-			#if character != string.punctuation:
-			#	storyEdit.append(character)
-
-#	return storyEdit
-
 	f = open(file_name,'r')
 	lines = f.readlines()
 	curr_line = 0
 	while lines[curr_line].find('START OF THIS PROJECT GUTENBERG EBOOK') == -1:
 		curr_line += 1
-		lines = lines[curr_line+1:]
-		
-		for words in lines:
-			if lines[curr_line].find('THE END') == curr_line:
-				break
-			else:
-				print words
+	lines = lines[curr_line+1:]
 
-		
-			#storyEdit.append(words.lower())
+	for row in lines:
+	 	row = row.lower()
+	 	row = row.translate(string.maketrans("",""), string.punctuation)
+	 	storyEdit += row.split()
 
-	#return storyEdit
+	return storyEdit
 
 
 def get_top_n_words(word_list, n):
@@ -50,8 +40,20 @@ def get_top_n_words(word_list, n):
 		returns: a list of n most frequently occurring words ordered from most
 				 frequently to least frequentlyoccurring
 	"""
-	pass
+	
+
+	c = Counter(word_list)
+	topWords = []
+	#for i in range(0,n - 1):
+		#topWords[i] = c[i]
+		#print c(i)
+
+	#return topWords
+	return c
 
 
-print get_word_list('pg32325.txt')
+
+#print get_word_list('test.txt')
+#print get_word_list('pg32325.txt')
+print get_top_n_words(get_word_list('pg32325.txt'), 10)
 
