@@ -10,7 +10,9 @@ class Date(object):
             year: the year (represented as an integer)
             This method will not validate whether a given date is invalid
             (e.g. April 31, 2000) """
-        pass
+        self.month = month
+        self.day = day
+        self.year = year
 
 
     def is_before(self,other_date):
@@ -21,9 +23,12 @@ class Date(object):
             >>> d1.is_before(d2)
             True
         """
-        pass
-
-
+        if self.year < other_date.year:
+            return True
+        elif self.year == other_date.year:
+            if self.month < other_date.month:
+                return True
+            return False
     def __str__(self):
         """ Converts the date to a string in the following format:
             Month, Day Year (where Month is the name of the month, e.g. January)
@@ -45,6 +50,10 @@ class Date(object):
             Note: please add appropriate doctests BEFORE you start coding """
         pass
 
-if __name__ == '__main__':
+"""if __name__ == '__main__':
     import doctest
-    doctest.testmod()
+    doctest.testmod()"""
+
+d1 = Date(4,20,1981)
+d2 = Date(5,31,1995)
+print d1.is_before(d2)
