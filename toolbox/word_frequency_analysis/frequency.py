@@ -44,12 +44,13 @@ def get_top_n_words(word_list, n):
 				 frequently to least frequentlyoccurring
 	"""
 	
-
+	#Uses Counter function to create tuples of words and number of instances of word
 	wordCount = Counter(word_list)
 	topWords = []
 
 	orderedByFrequency = sorted(wordCount, key=wordCount.get, reverse=True)
 
+	#create list of inputted 'n' top words
 	for i in range (0 , n):
 		topWords.append(orderedByFrequency[i])
 
