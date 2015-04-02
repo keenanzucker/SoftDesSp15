@@ -56,7 +56,7 @@ def reverse_complement_2(dna):
     return "".join(return_val)
 
 if __name__ == '__main__':
-    dna_length = 100
+    dna_length = 400000
     import doctest
     doctest.testmod()
     dna = generate_random_dna(dna_length)
